@@ -3,7 +3,26 @@ using DataStructuresAndAlgorithms.Arrays;
 
 
 TestTwoSum();
+TestBestTimeToBuyAndSellStock();
+TestContainsDuplicate();
 
+
+
+static void TestContainsDuplicate()
+{
+    var nums = new int[] { 1,2,3,1};
+    var result = ContainsDuplicate.CheckForDuplicates(nums);
+    Console.WriteLine(string.Join(", ", result));
+
+}
+
+static void TestBestTimeToBuyAndSellStock()
+{
+    var prices = new int[] { 7, 1, 5, 3, 6, 4 };
+    var result = BestTimeToBuyAndSellStock.MaxProfit(prices);
+    Console.WriteLine(string.Join(", ", result));
+
+}
 
 static void TestTwoSum()
 {
