@@ -5,7 +5,14 @@ using DataStructuresAndAlgorithms.Arrays;
 TestTwoSum();
 TestBestTimeToBuyAndSellStock();
 TestContainsDuplicate();
+TestProductExceptSelf();
 
+static void TestProductExceptSelf()
+{
+    var nums = new int[] { 1, 2, 3, 4 };
+    var result = ProductofArrayExceptSelf.ProductExceptSelf(nums);
+    Console.WriteLine(string.Join(", ", result));
+}
 
 
 static void TestContainsDuplicate()
