@@ -11,14 +11,14 @@
     ///  Output: 5
     ///  Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
     /// </summary>
-    public static class BestTimeToBuyAndSellStock
+    public class BestTimeToBuyAndSellStock
     {
         /// <summary>
         /// Calculates the maximum profit that can be made from buying and selling in an array of stock prices.
         /// <para>Time complexity: O(n), where n is the number of days (length of the prices array), because we make a single pass through the array.</para>
         /// <para>Space complexity: O(1), because only a constant amount of space is used, regardless of the size of the input array.</para>
         /// </summary>
-        public static int MaxProfit(int[] prices)
+        public int MaxProfit(int[] prices)
         {
             var start = 0;  // Buy on the first day initially
             var end = 1;  // Sell on the second day initially

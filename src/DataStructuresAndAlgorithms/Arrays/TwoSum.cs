@@ -10,14 +10,14 @@
     // Output: [0,1]
     // Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
     /// </summary>
-    public static class TwoSum
+    public class TwoSum
     {
         /// <summary>
         /// Solves the Two Sum problem using a hash map.
         /// <para>Time complexity: O(n), where n is the number of elements in the array, because we make a single pass through the array.</para>
         /// <para>Space complexity: O(n), because in the worst case, we would need to store all numbers in the hash map.</para>
         /// </summary>
-        public static int[] SolveWithHashMap(int[] nums, int target)
+        public int[] SolveWithHashMap(int[] nums, int target)
         {
             var numIndices = new Dictionary<int, int>();
 

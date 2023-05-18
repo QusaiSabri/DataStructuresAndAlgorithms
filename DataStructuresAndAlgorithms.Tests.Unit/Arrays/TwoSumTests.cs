@@ -1,0 +1,24 @@
+﻿using DataStructuresAndAlgorithms.Arrays;
+
+namespace DataStructuresAndAlgorithms.Tests.Unit.Arrays
+{
+
+    public class TwoSumTests
+    {
+        [Fact]
+        public void SolveWithHashMap_ShouldReturnIndicesOfTwoNumbers_ThatAddUpToTarget()
+        {
+            // Arrange
+            var twoSum = new TwoSum();
+            int[] nums = { 2, 7, 11, 15 };
+            int target = 9;
+
+            // Act
+            var result = twoSum.SolveWithHashMap(nums, target);
+
+            // Assert
+            Assert.Equal(result, new int[] { 0, 1 });
+
+        }
+    }
+}
