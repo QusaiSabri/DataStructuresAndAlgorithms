@@ -1,4 +1,6 @@
-﻿using DataStructuresAndAlgorithms.Arrays;
+﻿
+
+using DataStructuresAndAlgorithms.Arrays;
 
 namespace DataStructuresAndAlgorithms.Tests.Unit.Arrays
 {
