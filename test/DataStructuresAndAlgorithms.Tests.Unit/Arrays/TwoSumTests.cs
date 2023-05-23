@@ -1,6 +1,7 @@
 ﻿
 
 using DataStructuresAndAlgorithms.Arrays;
+using FluentAssertions;
 
 namespace DataStructuresAndAlgorithms.Tests.Unit.Arrays
 {
@@ -19,7 +20,8 @@ namespace DataStructuresAndAlgorithms.Tests.Unit.Arrays
             var result = twoSum.SolveWithHashMap(nums, target);
 
             // Assert
-            Assert.Equal(result, new int[] { 0, 1 });
+            result.Should().BeEquivalentTo(new int[] { 0, 1 });
+
 
         }
     }
