@@ -1,0 +1,823 @@
+using System.ComponentModel;
+using System.Linq;
+
+//Shape s = new Tringle();
+//Shape s2 = new Circle();
+
+//s.Draw();
+//s2.Draw();
+
+
+//Console.WriteLine(" ");
+
+
+
+//public abstract class Shape{
+//    public string Name { get; set; }
+
+
+//    public abstract void Draw();    
+//}
+
+
+
+
+
+
+//public class Tringle : Shape
+//{
+//    public override void Draw()
+//    {
+//        Console.WriteLine("This is a Triangle");
+//    }
+//}
+
+
+
+
+
+
+//public class Circle : Shape
+//{
+//    public override void Draw()
+//    {
+//        Console.WriteLine("This is a Circle");
+//    }
+//}
+
+
+//var node1 = new ListNode(1);
+//var node2 = new ListNode(4);
+//var node3 = new ListNode(5);
+
+//node1.next = node2;
+//node2.next = node3;
+
+
+//var node11 = new ListNode(1);
+//var node22 = new ListNode(3);
+//var node33 = new ListNode(4);
+
+//node11.next = node22;
+//node22.next = node33;
+
+
+//var node111 = new ListNode(2);
+//var node222 = new ListNode(6);
+//node111.next = node222;
+
+
+//var lists = new ListNode[] { node1, node11, node111 };
+//var res = MergeKLists(lists);
+//Console.WriteLine(res);
+
+
+//var numCourses = 6;
+//var prerequisites = new int[][] { new int[] { 1, 0 } };
+//var prerequisites = new int[][] {
+//    new int[] { 2, 5 },
+//    new int[] { 0, 5 },
+//    new int[] { 0, 4 },
+//    new int[] { 1, 4 },
+//    new int[] { 3, 2 },
+//    new int[] { 1, 3 }    
+//};
+//var res = Solution.CanFinish(numCourses, prerequisites);
+//Console.WriteLine(res);
+
+//var graph = new char[][] {
+//    new char[] { '1', '1', '1', '1', '1', '1' },
+//    new char[] { '1', '0', '0', '0', '0', '1' },
+//    new char[] { '1', '0', '1', '1', '0', '1' },
+//    new char[] { '1', '0', '0', '0', '0', '1' },
+//    new char[] { '1', '1', '1', '1', '1', '1' }
+//};
+//var res = new Solution().NumIslands(graph);
+//Console.WriteLine(res);
+
+
+//var edges = new int[][] {
+//    new int[] { 0,1},
+//    new int[] { 1,2},
+//    new int[] { 3,4 }
+//};
+//var res = new Solution().NumberOfConnectedComponentsInGraph(5, edges);
+//Console.WriteLine(res);
+
+//var edges = new int[][] {
+//    new int[] { 0,1},
+//    new int[] { 1,2},
+//    new int[] { 3,4 }
+//};
+//var res = new Solution().CountComponents(5,edges);
+//Console.WriteLine(res);
+
+
+//var rooms = new int[][] {
+//    new int[] { 2147483647,-1,0,2147483647},
+//    new int[] { 2147483647,2147483647,2147483647,-1},
+//    new int[] { 2147483647, -1, 2147483647, -1 },
+//    new int[] { 0, -1, 2147483647, 2147483647 }
+
+//};
+//new Solution().WallsAndGates(rooms);
+
+//int[] profits = { 1, 6, 10, 16 };
+//int[] weights = { 1, 2, 3, 5 };
+//var knapsack = new Knapsack();
+
+//var resDP = knapsack.DPSolution(profits, weights, 7);
+
+//Console.WriteLine("Total profit --> " + resDP);
+
+
+////====================================================
+//class Knapsack
+//{
+//    public int DPSolution(int[] profits, int[] weights, int capacity)
+//    {
+//        //base case
+//        if (capacity == 0 || profits.Length != weights.Length)
+//            return 0;
+
+//        var n = profits.Length;
+//        var dp = new int[n, capacity + 1];
+
+//        //only one weight
+//        for (int c = 0; c <= capacity; c++)
+//        {
+//            if (weights[0] <= c)
+//            {
+//                dp[0, c] = profits[0];
+//            }
+//        }
+
+
+//        //Process all sub-arrays with all possible capacities
+//        for (int i = 0; i < n; i++)
+//        {
+//            for (int c = 1; c <= capacity; c++)
+//            {
+//                var prof1 = 0;
+//                var prof2 = 0;
+
+//                // include the item
+//                if (weights[i] <= c)
+//                    prof1 = profits[i] + dp[i - 1, c - weights[i]];
+
+//                // exclude the item
+//                prof2 = dp[i - 1, c];
+
+
+//                //Take Max
+//                dp[i, c] = Math.Max(prof1, prof2);
+//            }
+//        }
+
+//        return dp[n - 1, capacity];
+
+//    }
+//}
+//====================================================
+//namespace lintcode
+//{
+//    class Solution
+//    {
+//        /**
+//         * @param n: An integer
+//         * @param edges: a list of undirected edges
+//         * @return: true if it's a valid tree, or false
+//         */
+//        public bool ValidTree(int n, int[][] edges)
+//        {
+//            // write your code here
+//            if (n == 0)
+//            {
+//                return true;
+//            }
+
+//            var adj = new Dictionary<int, List<int>>();
+//            for (var i = 0; i < n; i++)
+//            {
+//                adj[i] = new List<int>();
+//            }
+
+//            foreach (var node in edges)
+//            {
+//                adj[node[0]].Add(node[1]); //because it's undirected so it gos both ways
+//                adj[node[1]].Add(node[0]);
+//            }
+
+//            var visited = new HashSet<int>();
+
+//            bool DFS(int node, int prev)
+//            {
+//                if (visited.Contains(node))
+//                    return false;
+
+//                visited.Add(node);
+//                foreach (var curNode in adj[node])
+//                {
+//                    if (curNode == prev)
+//                        continue;
+
+//                    if (!DFS(curNode, node))
+//                        return false;
+
+
+//                }
+//                return true;
+//            }
+
+//            return DFS(0, -1) && n == visited.Count;
+
+
+//        }
+//    }
+//}
+
+//public class Solution
+//{
+//    public void WallsAndGates(int[][] rooms)
+//    {
+//        // write your code here
+//        var rows = rooms.Length;
+//        var cols = rooms[0].Length;
+//        var q = new Queue<(int, int)>();
+//        var visited = new HashSet<(int, int)>();
+//        var directions = new int[][]
+//        {
+//            new int[] {0,1},
+//            new int[] {0,-1},
+//            new int[] {1,0},
+//            new int[] {-1,0}
+//        };
+
+
+//        for (int r = 0; r < rows; r++)
+//        {
+//            for (int c = 0; c < cols; c++)
+//            {
+//                if (rooms[r][c] == 0)
+//                {
+//                    q.Enqueue((r, c));
+//                    visited.Add((r, c));
+
+//                }
+//            }
+
+//        }
+
+//        var dist = 0;
+
+
+//            while (q.Count > 0)
+//            {
+
+
+//            var qCount = q.Count;
+
+//            for (int i = 0; i < qCount; i++)
+//            {
+//                var (r, c) = q.Dequeue();
+//                rooms[r][c] = dist;
+//                foreach (var dir in directions)
+//                {
+//                    var newRow = r + dir[0];
+//                    var newCol = c + dir[1];
+
+//                    if (newRow >= 0 && newCol >= 0 && newRow < rows && newCol < cols && rooms[newRow][newCol] != -1 && !visited.Contains((newRow, newCol)))
+//                    {                     
+//                        q.Enqueue((newRow, newCol));
+//                        visited.Add((newRow, newCol));
+
+//                    }
+//                }
+
+
+//            }
+//            dist++;
+
+//        }
+
+
+
+//    }
+//}
+
+//public class Solution
+//{
+//    public int CountComponents(int n, int[][] edges)
+//    {
+//        var par = new int[n];
+//        var rank = new int[n];
+//        var res = n;
+
+//        for (int i = 0; i < par.Length; i++)
+//        {
+//            par[i] = i;
+//        }
+
+//        foreach (var e in edges)
+//        {
+
+//            res -= Union(e[0], e[1]);
+
+//        }
+
+
+//        int Union(int v1, int v2)
+//        {
+//            var p1 = Find(v1);
+//            var p2 = Find(v2);
+
+//            if (p1 == p2)
+//                return 0;
+
+//            if (rank[p1] > rank[p2])
+//            {
+//                par[p2] = p1;
+//                rank[p1] += rank[p2];
+//            } else
+//            {
+//                par[p1] = p2;
+//                rank[p2] += rank[p1];
+//            }
+//            return 1;
+//        }
+
+//        int Find(int n)
+//        {
+//            var p = par[n];
+
+//            while (p != par[p])
+//            {
+//                par[p] = par[par[p]];
+//                p = par[p];
+//            }
+//            return p;
+//        }
+
+//        return res;
+//    }
+
+//}
+
+//public class Solution
+//{
+//    public int[] FindRedundantConnection(int[][] edges)
+//    {
+//        //Inizialize parent & rank array
+//        var par = new int[edges.Length + 1];
+//        var rank = new int[edges.Length + 1];
+
+//        for (var i = 0; i < par.Length; i++)
+//        {
+//            par[i] = i;
+//        }
+
+//        foreach (var e in edges)
+//        {
+//            //if these 2 nodes already have the same parent, this means we are addign a redundant edge (they are already connected! why connect again?)
+//            if (Find(e[0]) == Find(e[1]))
+//            {
+//                return e;
+//            }
+//            else
+//            {
+//                Union(e[0], e[1]);
+//            }
+//        }
+
+//        return edges[0];
+
+//        int Find(int n)
+//        {
+//            var p = par[n];
+
+//            while (p != par[p])
+//            {
+//                par[p] = par[par[p]];
+//                p = par[p];
+//            }
+//            return p;
+//        }
+
+//        void Union(int n1, int n2)
+//        {
+//            var p1 = Find(n1);
+//            var p2 = Find(n2);
+
+//            if (p1 == p2)
+//                return;
+
+//            if (rank[p1] > rank[p2])
+//            {
+//                par[p2] = p1;
+//                rank[p1] += rank[p2];
+//            }
+//            else
+//            {
+//                par[p1] = p2;
+//                rank[p2] += rank[p1];
+//            }
+
+//        }
+
+//    }
+//}
+//public class Solution
+//{
+//    public int NumberOfConnectedComponentsInGraph(int n, int[][] edges)
+//    {
+//        var res = n;
+//        //initialize a parent array (initially each node will be the parent of itself)
+//        var parent = new int[n];
+//        //initialize a list of Ranks (initially each component will have a rank of 1)
+//        var rank = new List<int>();
+
+
+//        foreach(var edge in edges)
+//        {
+//            res -= Union(edge[0], edge[1]);
+//        }
+
+
+
+//        //Define a Find(n1) function, to find each node's parent
+//        int Find(int vertex)
+//        {
+//            // If current vertex is
+//            // the topmost vertex
+//            if (vertex == parent[vertex])
+//            {
+//                return vertex;
+//            }
+
+//            // Otherwise, set topmost vertex of
+//            // its parent as its topmost vertex
+//            return parent[vertex] = Find(parent[vertex]);
+//        }
+
+//        //Define a Union(n1, n2) function, union components together
+//          //-- Call Find to find thier patent so we can merge them together
+//          int Union(int n1, int n2)
+//        {
+//            var p1 = Find(n1);
+//            var p2 = Find(n2);
+
+//            if (p1 == p2)
+//                return 0;
+
+//            if (rank[p2] > rank[p1])
+//            {
+//                par[p1] = par[p2];
+//                rank[p2] += rank[p1];
+//            } else
+//            {
+//                par[p2] = p1;
+//                rank[p1] += rank[p2];
+//            }
+
+//            return 1;
+//        }
+
+//        return res;
+//    }
+
+//}
+
+
+
+//===========================================================
+//var heights = new int[][]
+//{
+//    new int[] {1,1},
+//    new int[] {1,1},
+//    new int[] {1,1}
+//};
+
+//var res = new Solution().PacificAtlantic(heights);
+//Console.WriteLine(res);
+
+
+//===========================================================
+//public class Solution
+//{
+//    public IList<IList<int>> PacificAtlantic(int[][] heights)
+//    {
+//        var rows = heights.Length;
+//        var cols = heights[0].Length;
+//        var res = new List<IList<int>>();
+//        var pacific = new HashSet<(int, int)>();
+//        var atlantic = new HashSet<(int, int)>();
+
+//        var directions = new int[][]{
+//            new int[] {0,1},
+//            new int[] {0,-1},
+//            new int[] {1,0},
+//            new int[] {-1,0}
+//        };
+
+//        for (var r = 0; r < rows; r++)
+//        {
+//            DFS(r, 0, heights[r][0], pacific);
+//            DFS(r, cols - 1, heights[r][cols - 1], atlantic);
+//        }
+
+//        for (var c = 0; c < cols; c++)
+//        {
+//            DFS(0, c, heights[0][c], pacific);
+//            DFS(rows - 1, c, heights[rows - 1][c], atlantic);
+//        }
+
+
+//        //Find the common cells in both oceans and return as results
+//        for (var r = 0; r < rows; r++)
+//        {
+//            for (var c = 0; c < cols; c++)
+//            {
+//                if (pacific.Contains((r, c)) && atlantic.Contains((r, c)))
+//                {
+//                    var sequare = new List<int>();
+//                    sequare.Add(r);
+//                    sequare.Add(c);
+//                    res.Add(sequare);
+//                }
+//            }
+//        }
+
+//        void DFS(int r, int c, int prevHeight, HashSet<(int, int)> ocean)
+//        {
+
+//            if (ocean.Contains((r, c))
+//               || r < 0
+//               || c < 0
+//               || r >= rows
+//               || c >= cols
+//               || heights[r][c] < prevHeight)
+//            {
+//                return;
+//            }
+
+//            ocean.Add((r, c));
+
+//            foreach (var dir in directions)
+//            {
+//                var newRow = r + dir[0];
+//                var newCol = c + dir[1];
+
+//                DFS(newRow, newCol, heights[r][c], ocean);
+
+//            }
+
+//        }
+
+//        return res;
+//    }
+//}
+
+//===============================
+
+
+//public class Solution
+//{
+//    private HashSet<(int, int)> visited;
+
+//    public Solution()
+//    {
+//        visited = new HashSet<(int, int)>();
+//    }
+
+
+
+//    public int NumIslands(char[][] grid)
+//    {
+
+//        var rows = grid.Length;
+//        var cols = grid[0].Length;
+//        var islands = 0;
+
+
+//        for (var i = 0; i < rows; i++)
+//        {
+//            for (var j = 0; j < cols; j++)
+//            {
+//                if (grid[i][j] == '1' && !visited.Contains((i, j)))
+//                {
+//                    BFS(i, j);
+//                    islands++;
+//                }
+//            }
+//        }
+
+
+//         void BFS(int r, int c)
+//        {
+//            var q = new Queue<(int, int)>();
+//            visited.Add((r, c));
+
+//            q.Enqueue((r, c));
+
+//            var directions = new int[][]
+//               {
+//                new int[]{0,1},
+//                new int[]{1,0},
+//                new int[]{-1,0},
+//                new int[]{0,-1}
+//               };
+
+
+//            while (q.Count > 0)
+//            {
+//                var (row, col) = q.Dequeue();
+
+//                foreach (var dir in directions)
+//                {
+//                    var newRow = dir[0] + row;
+//                    var newCol = dir[1] + col;
+
+//                    if (isValid(rows, cols, newRow, newCol) && grid[newRow][newCol] == '1' && !visited.Contains((newRow, newCol)))
+//                    {
+//                        q.Enqueue((newRow, newCol));
+//                        visited.Add((newRow, newCol));
+//                    }
+
+//                }
+//            }
+//    }
+
+//        bool isValid(int rows, int cols, int newRow, int newCol)
+//        {
+//            return newRow >= 0 && newCol >= 0 && newRow < rows && newCol < cols;
+//        }
+
+//        return islands;
+//    }
+
+
+
+//}
+
+//public class Solution
+//{
+//    public static bool CanFinish(int numCourses, int[][] prerequisites)
+//    {
+//        //Initialize the graph 
+//        var graph = new List<List<int>>();
+//        var indegree = new List<int>();
+
+//        for (var i = 0; i < numCourses; i++)
+//        {
+//            graph.Add(new List<int>());
+//            indegree.Add(0);
+//        }
+
+//        ///Set the indegrees
+//        foreach (var pre in prerequisites)
+//        {
+//            graph[pre[1]].Add(pre[0]);
+//            indegree[pre[0]]++;
+//        }
+
+//        var q = new Queue<int>();
+//        var schedule = new List<int>();
+
+
+//        //check if we have a graph with zero indegree
+//        for (var i = 0; i < numCourses; i++)
+//        {
+
+//            if (indegree[i] == 0)
+//            {
+//                q.Enqueue(i);
+//            }
+//        }
+
+
+//        //process the q
+//        while (q.Count > 0)
+//        {
+//            var curCourse = q.Dequeue();
+//            schedule.Add(curCourse);
+
+//            //remove this course from any that has it as a prerequist 
+//            foreach (var next in graph[curCourse])
+//            {
+//                indegree[next]--;
+//                //now, see if we can add anything to the q
+//                if (indegree[next] == 0)
+//                {
+//                    q.Enqueue(next);
+//                }
+//            }
+//        }
+
+//        return schedule.Count == numCourses;
+//    }
+//}
+
+//[1,4,5],[1,3,4],[2,6]
+
+
+//     ListNode MergeKLists(ListNode[] lists)
+//    {
+//        var minHeap = new PriorityQueue<ListNode, int>();
+//        ListNode res = null;
+//        ListNode resHead = null;
+
+
+//    foreach (var head in lists)
+//    {
+//        if (head != null)
+//        {
+//            minHeap.Enqueue(head, head.val);
+//        }
+//    }
+
+//            while (minHeap.Count > 0)
+//            {
+//                var node = minHeap.Dequeue();
+
+//                if (node.next != null)
+//                {
+//                    minHeap.Enqueue(node.next, node.next.val);
+//                }
+
+//                if (res == null)
+//                {
+//                    res = node;
+//                    resHead = res;
+//                }
+//                else
+//                {
+//                    res.next = node;
+//                    res = res.next;
+//                }
+
+//            }
+
+
+//        return resHead;
+//    }
+//public class ListNode
+//{
+//    public int val;
+//    public ListNode next;
+//    public ListNode(int val = 0, ListNode next = null)
+//    {
+//        this.val = val;
+//        this.next = next;
+//    }
+//}
+
+
+Node head = new Node(0);
+Node current = head;
+
+//----------------------------
+//This is just a loop to create a Linked List that is 1000 nodes in length, basically a node with 1000 nodes inside of it
+//We call it "head" because it's the first Node
+for (int i = 1; i < 1000; i++)
+{
+    Node node = new Node(i);
+    current.next = node;
+    current = node;
+}
+//----------------------------
+
+var res = findTheValueOfLastNode(head);
+Console.WriteLine(res);
+
+
+//----------------------------
+int findTheValueOfLastNode(Node node)
+{
+    var res = 0;
+
+    if(node.next == null)
+    {
+        return res = node.val;
+    }
+    else
+    {
+       res = findTheValueOfLastNode(node.next);
+    }
+
+    return res;
+}
+//----------------------------
+
+//----------------------------
+public class Node
+{
+    public int val;
+    public Node next;
+
+    public Node(int val = 0, Node next = null)
+    {
+        this.val = val;
+        this.next = next;
+    }
+}
+//----------------------------
