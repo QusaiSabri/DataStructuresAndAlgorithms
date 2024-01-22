@@ -1,9 +1,25 @@
 ﻿
+
+
+
+using DataStructuresAndAlgorithms.Arrays;
+void TestIsAnagram()
+{
+    var s = "anagram";
+    var t = "nagaram";
+    var result = IsAnagramSolution.IsAnagram(s, t);
+    Console.WriteLine(result);
+}
+
+TestIsAnagram();
 //TestTwoSum();
 //TestBestTimeToBuyAndSellStock();
 //TestContainsDuplicate();
 //TestProductExceptSelf();
 //TestMaxSubArray();
+
+
+
 
 //void TestMaxSubArray()
 //{
