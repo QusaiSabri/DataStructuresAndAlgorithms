@@ -3,16 +3,16 @@
 
 
 using DataStructuresAndAlgorithms.Arrays;
-void TestIsAnagram()
-{
-    var s = "anagram";
-    var t = "nagaram";
-    var result = IsAnagramSolution.IsAnagram(s, t);
-    Console.WriteLine(result);
-}
+//void TestIsAnagram()
+//{
+//    var s = "anagram";
+//    var t = "nagaram";
+//    var result = IsAnagramSolution.IsAnagram(s, t);
+//    Console.WriteLine(result);
+//}
 
-TestIsAnagram();
-//TestTwoSum();
+//TestIsAnagram();
+TestTwoSum();
 //TestBestTimeToBuyAndSellStock();
 //TestContainsDuplicate();
 //TestProductExceptSelf();
@@ -47,15 +47,15 @@ TestIsAnagram();
 //    Console.WriteLine(string.Join(", ", result));
 
 //}
-//void TestTwoSum()
-//{
-//    // Test case
-//    int[] nums = { 2, 7, 11, 15 };
-//    int target = 9;
+void TestTwoSum()
+{
+    // Test case
+    int[] nums = { 2, 7, 11, 15 };
+    int target = 9;
 
-//    var result = TwoSum.SolveWithHashMap(nums, target);
-//    Console.WriteLine(string.Join(", ", result));
-//}
+    var result = TwoSum.SolveWithHashMap(nums, target);
+    Console.WriteLine(string.Join(", ", result));
+}
 //void TestKnapsack()
 //{
 //    int[] profits = { 1, 6, 10, 16 };

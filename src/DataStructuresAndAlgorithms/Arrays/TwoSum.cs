@@ -10,32 +10,30 @@
     // Output: [0,1]
     // Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
     /// </summary>
-    public class TwoSum
+    public static class TwoSum
     {
         /// <summary>
         /// Solves the Two Sum problem using a hash map.
         /// <para>Time complexity: O(n), where n is the number of elements in the array, because we make a single pass through the array.</para>
         /// <para>Space complexity: O(n), because in the worst case, we would need to store all numbers in the hash map.</para>
         /// </summary>
-        public int[] SolveWithHashMap(int[] nums, int target)
+        public static int[] SolveWithHashMap(int[] nums, int target)
         {
-            var numIndices = new Dictionary<int, int>();
+            var map = new Dictionary<int, int>();
 
-            for (int i = 0; i < nums.Length; i++)
+            for (var i = 0; i < nums.Length; i++)
             {
                 var complement = target - nums[i];
 
-                if (numIndices.ContainsKey(complement))
+                if (map.ContainsKey(complement))
                 {
-                    return new int[] { numIndices[complement], i };
+                    return new int[2] { map[complement], i };
                 }
-                else
-                {
-                    numIndices.Add(nums[i], i);
-                }
+
+                map[nums[i]] = i;
             }
 
-            return new int[] { };
+            throw new InvalidOperationException("No two sum solution");
         }
     }
 }
