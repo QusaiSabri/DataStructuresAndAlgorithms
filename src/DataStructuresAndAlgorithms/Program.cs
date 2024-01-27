@@ -11,15 +11,32 @@ using DataStructuresAndAlgorithms.Arrays;
 //    Console.WriteLine(result);
 //}
 
+
+TestGroupAnagramsWithSort();
 //TestIsAnagram();
-TestTwoSum();
+//TestTwoSum();
 //TestBestTimeToBuyAndSellStock();
 //TestContainsDuplicate();
 //TestProductExceptSelf();
 //TestMaxSubArray();
 
 
+void TestGroupAnagramsWithSort()
+{
+    var strs = new string[] { "eat", "tea", "tan", "ate", "nat", "bat" };
+    var result = new GroupAnagrams().SolveGroupAnagramsWithSort(strs);
 
+    foreach (var group in result)
+    {
+        Console.WriteLine("[" + string.Join(", ", group) + "]");
+    }
+
+    var result2 = new GroupAnagrams().SolveGroupAnagramsWithFrequencyCcount(strs);
+    foreach (var group in result2)
+    {
+        Console.WriteLine("[" + string.Join(", ", group) + "]");
+    }
+}
 
 //void TestMaxSubArray()
 //{
