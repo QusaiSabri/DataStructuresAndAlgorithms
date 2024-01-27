@@ -13,7 +13,7 @@ namespace DataStructuresAndAlgorithms.Arrays
         /// <returns></returns>
         public IList<IList<string>> SolveGroupAnagramsWithSort(string[] strs)
         {
-            if (strs == null || strs.Length == 0) 
+            if (strs == null || strs.Length == 0)
                 return new List<IList<string>>();
 
             var groups = new Dictionary<string, IList<string>>();
@@ -41,7 +41,7 @@ namespace DataStructuresAndAlgorithms.Arrays
         /// </summary>
         /// <param name="strs"></param>
         /// <returns></returns>
-        public IList<IList<string>> SolveGroupAnagramsWithFrequencyCcount(string[] strs)
+        public IList<IList<string>> SolveGroupAnagramsWithFrequencyCount(string[] strs)
         {
             if (strs == null || strs.Length == 0) return new List<IList<string>>();
 
