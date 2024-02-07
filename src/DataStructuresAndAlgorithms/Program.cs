@@ -12,7 +12,8 @@ using DataStructuresAndAlgorithms.Arrays;
 //}
 
 
-TestGroupAnagramsWithSort();
+TestTopKFrequent();
+//TestGroupAnagramsWithSort();
 //TestIsAnagram();
 //TestTwoSum();
 //TestBestTimeToBuyAndSellStock();
@@ -20,6 +21,14 @@ TestGroupAnagramsWithSort();
 //TestProductExceptSelf();
 //TestMaxSubArray();
 
+
+void TestTopKFrequent()
+{
+    var nums = new int[] { 1, 1, 1, 2, 2, 3 };
+    var k = 2;
+    var result = new TopKFrequentSolution().TopKFrequent(nums, k);
+    Console.WriteLine(string.Join(", ", result));
+}
 
 void TestGroupAnagramsWithSort()
 {
