@@ -7,7 +7,8 @@
 
 using DataStructuresAndAlgorithms.Arrays;
 
-TestIsValidSudoku();
+TestStringsCodec();
+//TestIsValidSudoku();
 //void TestIsAnagram()
 //{
 //    var s = "anagram";
@@ -24,6 +25,15 @@ TestIsValidSudoku();
 //TestProductExceptSelf();
 //TestMaxSubArray();
 
+void TestStringsCodec()
+{
+    var codec = new StringsCodec();
+    var input = new List<string> { "hello", "world" };
+    var encoded = codec.Encode(input);
+    Console.WriteLine(encoded);
+    var decoded = codec.Decode(encoded);
+    Console.WriteLine(string.Join(", ", decoded));
+}
 
 void TestIsValidSudoku()
 {
