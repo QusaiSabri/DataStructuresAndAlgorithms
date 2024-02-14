@@ -22,15 +22,15 @@ namespace DataStructuresAndAlgorithms.Arrays
             // Decodes a single string to a list of strings.
             public IList<string> Decode(string s)
             {
-                var i = 0;
+                var currentIndex = 0;
                 var result = new List<string>();
-                while (i < s.Length)
+                while (currentIndex < s.Length)
                 {
-                    var delimiterIndex = s.IndexOf('#', i);
-                    var length = int.Parse(s.Substring(i, delimiterIndex - i));
-                    i = delimiterIndex + 1; // Move past '#'
-                    result.Add(s.Substring(i, length));
-                    i += length; // Move to the start of the next encoded string
+                    var delimiterIndex = s.IndexOf('#', currentIndex);
+                    var length = s.Substring(currentIndex, delimiterIndex - currentIndex).Length;
+                    currentIndex = delimiterIndex + 1; // Move past '#'
+                    result.Add(s.Substring(currentIndex, length));
+                    currentIndex += length; // Move to the start of the next encoded string
                 }
                 return result;
             }
