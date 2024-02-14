@@ -28,13 +28,12 @@ namespace DataStructuresAndAlgorithms.Arrays
                 while (currentIndex < s.Length)
                 {
                     var delimiterIndex = s.IndexOf('#', currentIndex);
-                    var length = s.Substring(currentIndex, delimiterIndex - currentIndex).Length;
+                    var length = int.Parse(s.Substring(currentIndex, delimiterIndex - currentIndex));
                     currentIndex = delimiterIndex + 1; // Move past '#'
                     result.Add(s.Substring(currentIndex, length));
                     currentIndex += length; // Move to the start of the next encoded string
                 }
                 return result;
             }
-
     }
 }
