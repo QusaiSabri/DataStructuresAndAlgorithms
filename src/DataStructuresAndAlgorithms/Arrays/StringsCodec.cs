@@ -22,6 +22,7 @@ namespace DataStructuresAndAlgorithms.Arrays
             // Decodes a single string to a list of strings.
             public IList<string> Decode(string s)
             {
+                //5#Hello5#World
                 var currentIndex = 0;
                 var result = new List<string>();
                 while (currentIndex < s.Length)
