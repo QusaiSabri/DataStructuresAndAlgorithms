@@ -7,7 +7,8 @@
 
 using DataStructuresAndAlgorithms.Arrays;
 
-TestStringsCodec();
+TestLongestConsecutive();
+//TestStringsCodec();
 //TestIsValidSudoku();
 //void TestIsAnagram()
 //{
@@ -24,6 +25,13 @@ TestStringsCodec();
 //TestContainsDuplicate();
 //TestProductExceptSelf();
 //TestMaxSubArray();
+
+void TestLongestConsecutive()
+{
+    var nums = new int[] { 100, 4, 200, 1, 3, 2 };
+    var result = new LongestConsecutiveSolution().LongestConsecutive(nums);
+    Console.WriteLine(result);
+}
 
 void TestStringsCodec()
 {
