@@ -6,8 +6,11 @@
 
 
 using DataStructuresAndAlgorithms.Arrays;
+using DataStructuresAndAlgorithms.TwoPointers;
 
-TestLongestConsecutive();
+
+TestIsPalindrome();
+//TestLongestConsecutive();
 //TestStringsCodec();
 //TestIsValidSudoku();
 //void TestIsAnagram()
@@ -25,6 +28,14 @@ TestLongestConsecutive();
 //TestContainsDuplicate();
 //TestProductExceptSelf();
 //TestMaxSubArray();
+
+void TestIsPalindrome()
+{
+    //var s = "A man, a plan, a canal: Panama";
+    var s = "a.";
+    var result = TwoPointers.IsPalindrome(s);
+    Console.WriteLine(result);
+}
 
 void TestLongestConsecutive()
 {
