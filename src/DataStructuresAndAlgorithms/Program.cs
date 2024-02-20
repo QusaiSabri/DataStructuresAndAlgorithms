@@ -8,8 +8,8 @@
 using DataStructuresAndAlgorithms.Arrays;
 using DataStructuresAndAlgorithms.TwoPointers;
 
-
-TestIsPalindrome();
+ TestTwoSumII();
+//TestIsPalindrome();
 //TestLongestConsecutive();
 //TestStringsCodec();
 //TestIsValidSudoku();
@@ -29,6 +29,15 @@ TestIsPalindrome();
 //TestProductExceptSelf();
 //TestMaxSubArray();
 
+void TestTwoSumII()
+{
+    // Test case
+    int[] nums = { 2, 7, 11, 15 };
+    int target = 9;
+
+    var result = TwoPointers.TwoSum(nums, target);
+    Console.WriteLine(string.Join(", ", result));
+}
 void TestIsPalindrome()
 {
     //var s = "A man, a plan, a canal: Panama";
