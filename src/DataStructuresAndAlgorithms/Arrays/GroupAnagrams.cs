@@ -55,7 +55,8 @@ namespace DataStructuresAndAlgorithms.Arrays
                     count[c - 'a']++;
                 }
 
-                string key = string.Join("", count);
+                string key = string.Join("#", count);
+
                 if (!groups.ContainsKey(key))
                 {
                     groups[key] = new List<string>();

@@ -8,7 +8,7 @@
 using DataStructuresAndAlgorithms.Arrays;
 using DataStructuresAndAlgorithms.TwoPointers;
 
- TestTwoSumII();
+//TestTwoSumII();
 //TestIsPalindrome();
 //TestLongestConsecutive();
 //TestStringsCodec();
@@ -21,7 +21,7 @@ using DataStructuresAndAlgorithms.TwoPointers;
 //    Console.WriteLine(result);
 //}
 //TestTopKFrequent();
-//TestGroupAnagramsWithSort();
+TestGroupAnagramsWithSort();
 //TestIsAnagram();
 //TestTwoSum();
 //TestBestTimeToBuyAndSellStock();
@@ -92,23 +92,25 @@ void TestTopKFrequent()
 
 void TestGroupAnagramsWithSort()
 {
-    var strs = new string[] { "eat", "tea", "tan", "ate", "nat", "bat" };
-    List<string> string_list =
-    [
-        "eat",
-        "tea",
-        "tan",
-        "ate",
-        "nat",
-        "bat",
-    ];
+    //var strs = new string[] { "eat", "tea", "tan", "ate", "nat", "bat" };
+    var strs = new string[] { "bdddddddddd", "bbbbbbbbbbc" };
 
-    var result = new GroupAnagrams().SolveGroupAnagramsWithSort(strs);
+    //List<string> string_list =
+    //[
+    //    "eat",
+    //    "tea",
+    //    "tan",
+    //    "ate",
+    //    "nat",
+    //    "bat",
+    //];
 
-    foreach (var group in result)
-    {
-        Console.WriteLine("[" + string.Join(", ", group) + "]");
-    }
+    //var result = new GroupAnagrams().SolveGroupAnagramsWithSort(strs);
+
+    //foreach (var group in result)
+    //{
+    //    Console.WriteLine("[" + string.Join(", ", group) + "]");
+    //}
 
     var result2 = new GroupAnagrams().SolveGroupAnagramsWithFrequencyCount(strs);
     foreach (var group in result2)
