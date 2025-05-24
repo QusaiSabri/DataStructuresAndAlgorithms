@@ -188,5 +188,22 @@
             return water;
 
         }
+
+        // Buy and Sell Stock
+        public int MaxProfit(int[] prices)
+        {
+            int minPrice = int.MaxValue;
+            int maxProfit = 0;
+
+            foreach (var price in prices)
+            {
+                if (price < minPrice)
+                    minPrice = price; // update the lowest price seen so far
+                else
+                    maxProfit = Math.Max(maxProfit, price - minPrice); // calculate profit if sold today
+            }
+
+            return maxProfit;
+        }
     }
 }

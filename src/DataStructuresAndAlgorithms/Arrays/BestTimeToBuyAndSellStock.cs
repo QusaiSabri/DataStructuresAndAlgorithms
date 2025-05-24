@@ -20,30 +20,17 @@
         /// </summary>
         public int MaxProfit(int[] prices)
         {
-            var start = 0;  // Buy on the first day initially
-            var end = 1;  // Sell on the second day initially
-            var maxProfit = 0;  // Start with a profit of 0
+            var minPrice = int.MaxValue; // not zero, but the maximum possible integer value
+            var maxProfit = 0;
 
-            // Traverse the array, checking for the opportunity to sell at a profit
-            while (end < prices.Length)
+            foreach (var price in prices)
             {
-                // If the current price is higher than the buying price, calculate the profit
-                if (prices[start] < prices[end])
-                {
-                    var profit = prices[end] - prices[start];
-                    // Update maxProfit if the calculated profit is higher
-                    maxProfit = Math.Max(maxProfit, profit);
-                }
+                if (price < minPrice)
+                    minPrice = price; // update the lowest price seen so far
                 else
-                {
-                    // If the current price is lower than the buying price, update the buying day
-                    start = end;
-                }
-                // Move to the next day
-                end++;
+                    maxProfit = Math.Max(maxProfit, price - minPrice); // calculate profit if sold today
             }
 
-            // Return the maximum profit found
             return maxProfit;
         }
     }

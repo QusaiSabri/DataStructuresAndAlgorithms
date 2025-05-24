@@ -8,8 +8,10 @@
 using DataStructuresAndAlgorithms.Arrays;
 using DataStructuresAndAlgorithms.TwoPointers;
 
+
+TestMaxProfit();
 //TestMaxArea();
-TestTrappingRainWater();
+//TestTrappingRainWater();
 //Test3Sum();
 //TestTwoSumII();
 //TestIsPalindrome();
@@ -32,6 +34,12 @@ TestTrappingRainWater();
 //TestProductExceptSelf();
 //TestMaxSubArray();
 
+void TestMaxProfit()
+{
+    var prices = new int[] { 7, 1, 5, 3, 6, 4 };
+    var result = new TwoPointers().MaxProfit(prices);
+    Console.WriteLine(result);
+}
 void TestTrappingRainWater()
 {
     var height = new int[] { 0, 2, 0, 3, 1, 0, 1, 3, 2, 1 };
