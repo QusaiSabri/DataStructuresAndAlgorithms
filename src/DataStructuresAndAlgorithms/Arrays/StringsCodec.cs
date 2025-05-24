@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace DataStructuresAndAlgorithms.Arrays
 {
@@ -26,8 +22,9 @@ namespace DataStructuresAndAlgorithms.Arrays
                 var currentIndex = 0;
                 var result = new List<string>();
                 while (currentIndex < s.Length)
-                {
+                {                
                     var delimiterIndex = s.IndexOf('#', currentIndex);
+                var whatisthis = s.Substring(currentIndex, delimiterIndex - currentIndex);
                     var length = int.Parse(s.Substring(currentIndex, delimiterIndex - currentIndex));
                     currentIndex = delimiterIndex + 1; // Move past '#'
                     result.Add(s.Substring(currentIndex, length));

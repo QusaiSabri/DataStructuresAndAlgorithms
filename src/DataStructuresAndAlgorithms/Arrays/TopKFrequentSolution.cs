@@ -22,7 +22,8 @@ namespace DataStructuresAndAlgorithms.Arrays
         public int[] TopKFrequent(int[] nums, int k)
         {
             if (nums == null || nums.Length == 0 || k == 0) 
-                return new int[0];
+                return [];
+
 
             var result = new int[k];
             var frequencyMap = new Dictionary<int, int>();

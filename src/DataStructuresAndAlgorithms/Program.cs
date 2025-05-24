@@ -8,6 +8,9 @@
 using DataStructuresAndAlgorithms.Arrays;
 using DataStructuresAndAlgorithms.TwoPointers;
 
+//TestMaxArea();
+TestTrappingRainWater();
+//Test3Sum();
 //TestTwoSumII();
 //TestIsPalindrome();
 //TestLongestConsecutive();
@@ -21,7 +24,7 @@ using DataStructuresAndAlgorithms.TwoPointers;
 //    Console.WriteLine(result);
 //}
 //TestTopKFrequent();
-TestGroupAnagramsWithSort();
+//TestGroupAnagramsWithSort();
 //TestIsAnagram();
 //TestTwoSum();
 //TestBestTimeToBuyAndSellStock();
@@ -29,6 +32,12 @@ TestGroupAnagramsWithSort();
 //TestProductExceptSelf();
 //TestMaxSubArray();
 
+void TestTrappingRainWater()
+{
+    var height = new int[] { 0, 2, 0, 3, 1, 0, 1, 3, 2, 1 };
+    var result = TwoPointers.Trap(height);
+    Console.WriteLine(result);
+}
 void TestTwoSumII()
 {
     // Test case
@@ -37,6 +46,22 @@ void TestTwoSumII()
 
     var result = TwoPointers.TwoSum(nums, target);
     Console.WriteLine(string.Join(", ", result));
+}
+
+void TestMaxArea()
+{
+    var height = new int[] { 1, 7, 2, 5, 4, 7, 3, 6 };
+    var result = TwoPointers.MaxArea(height);
+    Console.WriteLine(result);
+}
+void Test3Sum()
+{
+    var nums = new int[] { -1, 0, 1, 2, -1, -4 };
+    var result = TwoPointers.ThreeSum(nums);
+    foreach (var triplet in result)
+    {
+        Console.WriteLine("[" + string.Join(", ", triplet) + "]");
+    }
 }
 void TestIsPalindrome()
 {
@@ -126,12 +151,12 @@ void TestGroupAnagramsWithSort()
 //    var result = MaximumSubarray.MaxSubArray(nums);
 //    Console.WriteLine(string.Join(", ", result));
 //}
-//void TestProductExceptSelf()
-//{
-//    var nums = new int[] { 1, 2, 3, 4 };
-//    var result = ProductofArrayExceptSelf.ProductExceptSelf(nums);
-//    Console.WriteLine(string.Join(", ", result));
-//}
+void TestProductExceptSelf()
+{
+    var nums = new int[] { 1, 2, 4, 6 };
+    var result = new ProductofArrayExceptSelf().ProductExceptSelf(nums);
+    Console.WriteLine(string.Join(", ", result));
+}
 //void TestContainsDuplicate()
 //{
 //    var nums = new int[] { 1, 2, 3, 1 };

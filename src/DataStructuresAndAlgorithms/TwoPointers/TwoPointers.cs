@@ -77,5 +77,116 @@
             // Return an empty array if no solution is found.
             return new int[] { };
         }
+
+        public static List<List<int>> ThreeSum(int[] nums)
+        {
+            var result = new List<List<int>>();
+
+            Array.Sort(nums);
+            // [-4, -1, -1, 0, 1, 2]
+            //       i   L        R
+            //       --  --       --
+            for (var i = 0; i < nums.Length - 2; i++)
+            {
+                // Skip duplicates for the first number
+                if (i > 0 && nums[i] == nums[i - 1]) continue;
+
+                var left = i + 1;
+                var right = nums.Length - 1;
+
+                while (left < right)
+                {
+                    var sum = nums[i] + nums[left] + nums[right];
+
+                    if (sum == 0)
+                    {
+                        result.Add(new List<int> { nums[i], nums[left], nums[right] });
+
+                        // Skip duplicates for left and right
+                        while (left < right && nums[left] == nums[left + 1]) left++;
+                        while (left < right && nums[right] == nums[right -1]) right--;
+
+                        left++;
+                        right--;
+                    }
+                    else if (sum < 0)
+                    {
+                        left++;
+                    }
+                    else
+                    {
+                        right--;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        //Container With Most Water
+        //height = [1,7,2,5,4,7,3,6]
+        public static int MaxArea(int[] heights)
+        {
+            var maxArea = 0;
+            var left = 0;
+            var right = heights.Length - 1;
+
+            while(left < right)
+            {
+                var h = Math.Min(heights[left], heights[right]);
+                var w = right - left;
+                maxArea = Math.Max(maxArea, h * w);
+
+                if (heights[left] < heights[right])
+                {
+                    left++;
+                }
+                else
+                {
+                    right--;
+                }
+            }
+            return maxArea;
+        }
+
+        // Trapping Rain Water
+        public static int Trap(int[] height)
+        {
+            var left = 0;
+            var right = height.Length - 1;
+            var leftMax = 0;
+            var rightMax = 0;
+            var water = 0;
+
+            while (left < right)
+            {
+                if (height[left] < height[right])
+                {
+                    if (height[left] >= leftMax)
+                    {
+                        leftMax = height[left];
+                    }
+                    else
+                    {
+                        water += leftMax - height[left];
+                    }
+                    left++;
+                }
+                else
+                {
+                    if (height[right] >= rightMax)
+                    {
+                        rightMax = height[right];
+                    }
+                    else
+                    {
+                        water += rightMax - height[right];
+                    }
+                    right--;
+                }
+            }
+            return water;
+
+        }
     }
 }
