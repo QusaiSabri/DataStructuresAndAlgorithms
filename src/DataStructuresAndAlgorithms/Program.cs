@@ -6,10 +6,11 @@
 
 
 using DataStructuresAndAlgorithms.Arrays;
+using DataStructuresAndAlgorithms.StackSolution;
 using DataStructuresAndAlgorithms.TwoPointers;
 
-
-TestMaxProfit();
+TestIsValidParentheses();
+//TestMaxProfit();
 //TestMaxArea();
 //TestTrappingRainWater();
 //Test3Sum();
@@ -33,6 +34,13 @@ TestMaxProfit();
 //TestContainsDuplicate();
 //TestProductExceptSelf();
 //TestMaxSubArray();
+
+void TestIsValidParentheses()
+{
+    var s = "([{}])";
+    var result = new StackSolution().IsValidParentheses(s);
+    Console.WriteLine(result);
+}
 
 void TestMaxProfit()
 {
