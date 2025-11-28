@@ -11,31 +11,25 @@
         // Space complexity: O(1) since we use a constant amount of space regardless of the input size.
         public static bool IsPalindrome(string s)
         {
-            if (s == null || s.Length == 0)
-            {
+            if (string.IsNullOrEmpty(s))
                 return true;
-            }
 
-            s = s.ToLower();
-
-            var left = 0;
-            var right = s.Length - 1;
+            int left = 0;
+            int right = s.Length - 1;
 
             while (left < right)
             {
+                // Move left pointer to next valid character
                 while (left < right && !char.IsLetterOrDigit(s[left]))
-                {
                     left++;
-                }
-                while (left < right && !char.IsLetterOrDigit(s[right]))
-                {
-                    right--;
-                }
 
-                if (s[left] != s[right])
-                {
+                // Move right pointer to previous valid character
+                while (left < right && !char.IsLetterOrDigit(s[right]))
+                    right--;
+
+                // Compare characters (case-insensitive)
+                if (char.ToLower(s[left]) != char.ToLower(s[right]))
                     return false;
-                }
 
                 left++;
                 right--;
@@ -43,6 +37,7 @@
 
             return true;
         }
+
 
         // Two Sum II - Input Array Is Sorted
         // Given an array of integers numbers that is already sorted in non-decreasing order, find two numbers such that they add up to a specific target number.
