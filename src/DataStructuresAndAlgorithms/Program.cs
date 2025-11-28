@@ -1,15 +1,11 @@
-﻿
-
-
-
-//using DataStructuresAndAlgorithms.Arrays;
-
-
-using DataStructuresAndAlgorithms.Arrays;
+﻿using DataStructuresAndAlgorithms.Arrays;
+using DataStructuresAndAlgorithms.SlidingWindow;
 using DataStructuresAndAlgorithms.StackSolution;
 using DataStructuresAndAlgorithms.TwoPointers;
 
-TestIsValidParentheses();
+TestLongestSubstringWithoutRepeatingCharacters();
+//TestBestTimeToBuyAndSellStock();
+//TestIsValidParentheses();
 //TestMaxProfit();
 //TestMaxArea();
 //TestTrappingRainWater();
@@ -34,6 +30,21 @@ TestIsValidParentheses();
 //TestContainsDuplicate();
 //TestProductExceptSelf();
 //TestMaxSubArray();
+
+void TestLongestSubstringWithoutRepeatingCharacters()
+{
+    var s = "abcabcbb";
+    var res = new LongestSubstringWithoutRepeatingCharacters().LengthOfLongestSubstring(s);
+
+    Console.WriteLine(res);
+}
+void TestBestTimeToBuyAndSellStock()
+{
+    var prices = new int[] { 7, 1, 5, 3, 6, 4 };
+    var res = new DataStructuresAndAlgorithms.SlidingWindow.BestTimeToBuyAndSellStock().MaxProfit(prices);
+
+    Console.WriteLine(res);
+}
 
 void TestIsValidParentheses()
 {
