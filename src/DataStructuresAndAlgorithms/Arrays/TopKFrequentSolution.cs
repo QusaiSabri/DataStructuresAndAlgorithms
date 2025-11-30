@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataStructuresAndAlgorithms.Arrays
+﻿namespace DataStructuresAndAlgorithms.Arrays
 {
     public class TopKFrequentSolution
     {
@@ -21,14 +14,14 @@ namespace DataStructuresAndAlgorithms.Arrays
 
         public int[] TopKFrequent(int[] nums, int k)
         {
-            if (nums == null || nums.Length == 0 || k == 0) 
+            if (nums == null || nums.Length == 0 || k == 0)
                 return [];
 
 
             var result = new int[k];
             var frequencyMap = new Dictionary<int, int>();
 
-            foreach(var num in nums)
+            foreach (var num in nums)
             {
                 if (!frequencyMap.ContainsKey(num))
                 {
@@ -40,7 +33,7 @@ namespace DataStructuresAndAlgorithms.Arrays
                 }
             }
 
-            var priortyQueue = new PriorityQueue<int, int>(new Comparer());
+            var priortyQueue = new PriorityQueue<int, int>();
 
             foreach (var (num, count) in frequencyMap)
             {
@@ -58,14 +51,6 @@ namespace DataStructuresAndAlgorithms.Arrays
             }
 
             return result;
-        }
-    }
-
-    internal class Comparer : IComparer<int>
-    {
-        public int Compare(int x, int y)
-        {
-            return (x.CompareTo(y));
         }
     }
 }

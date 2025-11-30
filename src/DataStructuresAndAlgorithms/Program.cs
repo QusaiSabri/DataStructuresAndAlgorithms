@@ -6,10 +6,12 @@
 
 
 using DataStructuresAndAlgorithms.Arrays;
+using DataStructuresAndAlgorithms.BinarySearch;
 using DataStructuresAndAlgorithms.StackSolution;
 using DataStructuresAndAlgorithms.TwoPointers;
 
-TestIsValidParentheses();
+TestBSSearch();
+//TestIsValidParentheses();
 //TestMaxProfit();
 //TestMaxArea();
 //TestTrappingRainWater();
@@ -38,7 +40,7 @@ TestIsValidParentheses();
 void TestIsValidParentheses()
 {
     var s = "([{}])";
-    var result = new StackSolution().IsValidParentheses(s);
+    var result = new IsValidParenthesesSolution().IsValidParentheses(s);
     Console.WriteLine(result);
 }
 
@@ -195,6 +197,15 @@ void TestTwoSum()
 
     var result = TwoSum.SolveWithHashMap(nums, target);
     Console.WriteLine(string.Join(", ", result));
+}
+void TestBSSearch()
+{
+    // Test Case
+    var nums = new int[] { -1, 0, 3, 5, 9, 12 };
+    var target = 9;
+
+    var res = BSSolution.BinarySearch(nums, target);
+    Console.WriteLine(res);
 }
 //void TestKnapsack()
 //{

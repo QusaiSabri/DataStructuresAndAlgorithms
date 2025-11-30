@@ -54,68 +54,84 @@
 
         public static int[] TwoSum(int[] numbers, int target)
         {
-            int left = 0, right = numbers.Length - 1;
+            //[2,7,11,15]
+            // L       R
+
+            var left = 0;
+            var right = numbers.Length - 1;
 
             while (left < right)
             {
-                int sum = numbers[left] + numbers[right];
+                var sum = numbers[left] + numbers[right];
 
                 if (sum == target)
-                {
-                    return new int[] { left + 1, right + 1 };
-                }
-                else if (sum < target)
+                    return new int[2] { left + 1, right + 1 };
+
+                if (sum < target && left < right)
                 {
                     left++;
                 }
-                else
+
+                if (sum > target && left < right)
                 {
                     right--;
                 }
             }
 
             // Return an empty array if no solution is found.
-            return new int[] { };
+            return [];
         }
 
         public static List<List<int>> ThreeSum(int[] nums)
         {
             var result = new List<List<int>>();
 
+            if (nums == null || nums.Length < 3)
+                return result;
+
             Array.Sort(nums);
+
             // [-4, -1, -1, 0, 1, 2]
             //       i   L        R
             //       --  --       --
-            for (var i = 0; i < nums.Length - 2; i++)
-            {
-                // Skip duplicates for the first number
-                if (i > 0 && nums[i] == nums[i - 1]) continue;
 
-                var left = i + 1;
-                var right = nums.Length - 1;
+            //Loop through each number as a potential first element of the triplet.
+            for (int i = 0; i < nums.Length - 2; i++)
+            {
+                // Skip duplicates for first number
+                if (i > 0 && nums[i] == nums[i - 1])
+                    continue;
+
+                //For each number, we run a two pointer search(left, right) to find pairs that sum to - nums[i].
+                int left = i + 1;
+                int right = nums.Length - 1;
 
                 while (left < right)
                 {
-                    var sum = nums[i] + nums[left] + nums[right];
+                    int sum = nums[i] + nums[left] + nums[right];
 
                     if (sum == 0)
                     {
                         result.Add(new List<int> { nums[i], nums[left], nums[right] });
 
-                        // Skip duplicates for left and right
-                        while (left < right && nums[left] == nums[left + 1]) left++;
-                        while (left < right && nums[right] == nums[right -1]) right--;
-
                         left++;
                         right--;
+
+                        // Skip duplicates for the second number
+                        while (left < right && nums[left] == nums[left - 1])
+                            left++;
+
+                        // Skip duplicates for the third number
+                        while (left < right && nums[right] == nums[right + 1])
+                            right--;
                     }
                     else if (sum < 0)
                     {
-                        left++;
+                        left++;     // Need a bigger sum
                     }
                     else
                     {
-                        right--;
+                        right--;    // Need a smaller sum
                     }
                 }
             }
@@ -131,7 +147,7 @@
             var left = 0;
             var right = heights.Length - 1;
 
-            while(left < right)
+            while (left < right)
             {
                 var h = Math.Min(heights[left], heights[right]);
                 var w = right - left;
@@ -152,42 +168,61 @@
         // Trapping Rain Water
         public static int Trap(int[] height)
         {
-            var left = 0;
-            var right = height.Length - 1;
-            var leftMax = 0;
-            var rightMax = 0;
-            var water = 0;
+            int left = 0;
+            int right = height.Length - 1;
 
+            // Track the highest wall seen so far from the left
+            int leftMax = 0;
+
+            // Track the highest wall seen so far from the right
+            int rightMax = 0;
+
+            // Total trapped water
+            int water = 0;
+
+            // Process from both ends until pointers meet
             while (left < right)
             {
+                // Always move the pointer with the smaller height
+                // because water level is limited by the shorter side
                 if (height[left] < height[right])
                 {
+                    // If current left height is a new maximum, update leftMax
                     if (height[left] >= leftMax)
                     {
                         leftMax = height[left];
                     }
                     else
                     {
+                        // Otherwise, water is leftMax minus current height
                         water += leftMax - height[left];
                     }
+
+                    // Move left pointer inward
                     left++;
                 }
                 else
                 {
+                    // If current right height is a new maximum, update rightMax
                     if (height[right] >= rightMax)
                     {
                         rightMax = height[right];
                     }
                     else
                     {
+                        // Otherwise, water is rightMax minus current height
                         water += rightMax - height[right];
                     }
+
+                    // Move right pointer inward
                     right--;
                 }
             }
-            return water;
 
+            // Total trapped water accumulated
+            return water;
         }
+
 
         // Buy and Sell Stock
         public int MaxProfit(int[] prices)

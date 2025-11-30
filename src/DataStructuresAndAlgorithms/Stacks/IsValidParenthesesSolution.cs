@@ -1,20 +1,20 @@
 ﻿
 namespace DataStructuresAndAlgorithms.StackSolution
 {
-    public class StackSolution
+    public class IsValidParenthesesSolution
     {
         public bool IsValidParentheses(string s)
         {
             var stack = new Stack<char>();
 
-            foreach (char c in s)
+            foreach (var c in s)
             {
                 if (c == '(') stack.Push(')');
                 else if (c == '{') stack.Push('}');
                 else if (c == '[') stack.Push(']');
                 else
                 {
-                    if (stack.Count == 0 || stack.Pop() != c)
+                    if (stack.Count == 0 || c != stack.Pop())
                         return false;
                 }
             }
@@ -23,3 +23,10 @@ namespace DataStructuresAndAlgorithms.StackSolution
         }
     }
 }
+/*
+|    |
+|  ] |
+|  } |
+|  ) |
+|____|
+*/
