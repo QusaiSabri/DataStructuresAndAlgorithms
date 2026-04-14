@@ -4,10 +4,10 @@ using DataStructuresAndAlgorithms.BinarySearch;
 using DataStructuresAndAlgorithms.StackSolution;
 using DataStructuresAndAlgorithms.TwoPointers;
 
-TestLongestSubstringWithoutRepeatingCharacters();
+//TestLongestSubstringWithoutRepeatingCharacters();
 //TestBestTimeToBuyAndSellStock();
 //TestIsValidParentheses();
-TestBSSearch();
+//TestBSSearch();
 //TestIsValidParentheses();
 //TestMaxProfit();
 //TestMaxArea();
@@ -30,7 +30,7 @@ TestBSSearch();
 //TestIsAnagram();
 //TestTwoSum();
 //TestBestTimeToBuyAndSellStock();
-//TestContainsDuplicate();
+TestContainsDuplicate();
 //TestProductExceptSelf();
 //TestMaxSubArray();
 
@@ -181,19 +181,19 @@ void TestGroupAnagramsWithSort()
 //    var result = MaximumSubarray.MaxSubArray(nums);
 //    Console.WriteLine(string.Join(", ", result));
 //}
-void TestProductExceptSelf()
+// void TestProductExceptSelf()
+// {
+//     var nums = new int[] { 1, 2, 4, 6 };
+//     var result = new ProductofArrayExceptSelf().ProductExceptSelf(nums);
+//     Console.WriteLine(string.Join(", ", result));
+// }
+void TestContainsDuplicate()
 {
-    var nums = new int[] { 1, 2, 4, 6 };
-    var result = new ProductofArrayExceptSelf().ProductExceptSelf(nums);
-    Console.WriteLine(string.Join(", ", result));
-}
-//void TestContainsDuplicate()
-//{
-//    var nums = new int[] { 1, 2, 3, 1 };
-//    var result = ContainsDuplicate.CheckForDuplicates(nums);
-//    Console.WriteLine(string.Join(", ", result));
+   var nums = new int[] { 1, 2, 3, 1 };
+   var result = new ContainsDuplicate().CheckForDuplicates(nums);
+   Console.WriteLine(string.Join(", ", result));
 
-//}
+}
 //void TestBestTimeToBuyAndSellStock()
 //{
 //    var prices = new int[] { 7, 1, 5, 3, 6, 4 };
