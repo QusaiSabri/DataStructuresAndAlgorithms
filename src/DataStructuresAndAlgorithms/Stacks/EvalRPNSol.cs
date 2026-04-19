@@ -8,7 +8,7 @@
             var stack = new Stack<int>();
 
             foreach (var token in tokens)
-            {
+             {
                 // If it's a number, push it to the stack
                 if (int.TryParse(token, out int number))
                 {

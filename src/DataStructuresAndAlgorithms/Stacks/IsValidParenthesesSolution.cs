@@ -12,10 +12,9 @@ namespace DataStructuresAndAlgorithms.StackSolution
                 if (c == '(') stack.Push(')');
                 else if (c == '{') stack.Push('}');
                 else if (c == '[') stack.Push(']');
-                else
+                else if (stack.Count == 0 || c != stack.Pop())
                 {
-                    if (stack.Count == 0 || c != stack.Pop())
-                        return false;
+                    return false;
                 }
             }
 

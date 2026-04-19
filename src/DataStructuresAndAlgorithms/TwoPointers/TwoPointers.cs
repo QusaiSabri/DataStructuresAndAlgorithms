@@ -60,7 +60,7 @@
                 var sum = numbers[left] + numbers[right];
 
                 if (sum == target)
-                    return new int[2] { left + 1, right + 1 };
+                    return [left + 1, right + 1];
 
                 if (sum < target && left < right)
                 {
@@ -167,10 +167,10 @@
             int right = height.Length - 1;
 
             // Track the highest wall seen so far from the left
-            int leftMax = 0;
+            int leftMaxSeen = 0;
 
             // Track the highest wall seen so far from the right
-            int rightMax = 0;
+            int rightMaxSeen = 0;
 
             // Total trapped water
             int water = 0;
@@ -183,14 +183,14 @@
                 if (height[left] < height[right])
                 {
                     // If current left height is a new maximum, update leftMax
-                    if (height[left] >= leftMax)
+                    if (height[left] >= leftMaxSeen)
                     {
-                        leftMax = height[left];
+                        leftMaxSeen = height[left];
                     }
                     else
                     {
                         // Otherwise, water is leftMax minus current height
-                        water += leftMax - height[left];
+                        water += leftMaxSeen - height[left];
                     }
 
                     // Move left pointer inward
@@ -199,14 +199,14 @@
                 else
                 {
                     // If current right height is a new maximum, update rightMax
-                    if (height[right] >= rightMax)
+                    if (height[right] >= rightMaxSeen)
                     {
-                        rightMax = height[right];
+                        rightMaxSeen = height[right];
                     }
-                    else
+                    els 
                     {
                         // Otherwise, water is rightMax minus current height
-                        water += rightMax - height[right];
+                        water += rightMaxSeen - height[right];
                     }
 
                     // Move right pointer inward

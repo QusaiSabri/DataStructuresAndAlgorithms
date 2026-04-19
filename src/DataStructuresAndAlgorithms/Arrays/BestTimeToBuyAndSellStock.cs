@@ -18,17 +18,33 @@
         /// <para>Time complexity: O(n), where n is the number of days (length of the prices array), because we make a single pass through the array.</para>
         /// <para>Space complexity: O(1), because only a constant amount of space is used, regardless of the size of the input array.</para>
         /// </summary>
+
         public int MaxProfit(int[] prices)
         {
-            var minPrice = int.MaxValue; // not zero, but the maximum possible integer value
-            var maxProfit = 0;
+            // left = the buy day (cheapest price seen so far)
+            // right = today (the potential sell day, always ahead of or equal to left)
+            int left = 0, right = 1;
+            int maxProfit = 0;
 
-            foreach (var price in prices)
+            // Walk right across the array one day at a time.
+            while (right < prices.Length)
             {
-                if (price < minPrice)
-                    minPrice = price; // update the lowest price seen so far
+                // Valid transaction: today's price is higher than our buy day.
+                if (prices[left] < prices[right])
+                {
+                    // Compute profit for this buy/sell pair and keep the best seen.
+                    int profit = prices[right] - prices[left];
+                    maxProfit = Math.Max(maxProfit, profit);
+                }
                 else
-                    maxProfit = Math.Max(maxProfit, price - minPrice); // calculate profit if sold today
+                {
+                    // Today is cheaper than (or equal to) our current buy day —
+                    // it's a better buying opportunity, so move left here.
+                    left = right;
+                }
+
+                // Advance today forward regardless.
+                right++;
             }
 
             return maxProfit;
